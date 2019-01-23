@@ -8,6 +8,7 @@ ARG BASE_URL=https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 RUN apt-get update && \
     apt-get install -y \
       curl procps \
+      gnupg gnupg2 gnupg1 \
   && rm -rf /var/lib/apt/lists/*
 
 # Maven fails with 'Can't read cryptographic policy directory: unlimited'
@@ -27,7 +28,7 @@ ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
 
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
-RUN apt-get install -y gnupg gnupg2 gnupg1 nodejs \
+RUN apt-get install -y nodejs \
   && rm -rf /var/lib/apt/lists/*
 
 
