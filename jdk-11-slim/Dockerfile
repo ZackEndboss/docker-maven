@@ -2,8 +2,6 @@ FROM maven:slim
 
 ARG USER_HOME_DIR="/root"
 
-WORKDIR "$USER_HOME_DIR"
-
 RUN apt-get update && \
     apt-get install -y \
       gnupg gnupg2 gnupg1 \
