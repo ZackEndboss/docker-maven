@@ -1,6 +1,6 @@
 FROM maven:slim
 
-ARG USER_HOME_DIR="/root"
+# ARG USER_HOME_DIR="/root"
 
 RUN apt-get update && \
     apt-get install -y \
@@ -8,14 +8,14 @@ RUN apt-get update && \
   && rm -rf /var/lib/apt/lists/*
 
 
-ENV MAVEN_CONFIG "$USER_HOME_DIR/.npmrc"
+#ENV npmrcs "$USER_HOME_DIR/.npmrc"
 
 RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
 RUN apt-get install -y nodejs \
   && rm -rf /var/lib/apt/lists/*
 
 
-ENV MAVEN_CONFIG "$USER_HOME_DIR/.npmrc"
+#ENV npmrcs "$USER_HOME_DIR/.npmrc"
 
 ENTRYPOINT ["/usr/local/bin/mvn-entrypoint.sh"]
 CMD ["mvn"]
